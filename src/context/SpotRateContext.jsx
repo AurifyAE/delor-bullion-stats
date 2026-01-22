@@ -19,12 +19,13 @@ export const SpotRateProvider = ({ children }) => {
     const updateMarketData = (marketData, goldBidSpread, goldAskSpread, silverBidSpread, silverAskSpread) => {
         if (marketData) {
             const goldValues = calculateValues(marketData.Gold?.bid, goldBidSpread, goldAskSpread, 0.5);
+
+
             setGoldData({
                 bid: goldValues?.bid,
                 ask: goldValues?.ask,
                 low: marketData.Gold?.low,
                 high: marketData.Gold?.high,
-                bidChanged: marketData.Gold?.bidChanged,
             });
 
             const silverValues = calculateValues(marketData.Silver?.bid, silverBidSpread, silverAskSpread, 0.05, 3);
@@ -33,7 +34,6 @@ export const SpotRateProvider = ({ children }) => {
                 ask: silverValues?.ask,
                 low: marketData.Silver?.low,
                 high: marketData.Silver?.high,
-                bidChanged: marketData.Silver?.bidChanged,
             });
         }
     };

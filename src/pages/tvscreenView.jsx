@@ -132,13 +132,6 @@ function TvScreen() {
             [data.symbol]: {
               ...prevData[data.symbol],
               ...data,
-              bidChanged:
-                prevData[data.symbol] && data.bid !== prevData[data.symbol].bid
-                  ? data.bid > prevData[data.symbol].bid
-                    ? "up"
-                    : "down"
-                  : null,
-
             },
           }));
         } else {
