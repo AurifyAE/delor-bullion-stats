@@ -67,7 +67,6 @@ const SpotRate = () => {
       <Typography sx={{ fontSize: "2vw", fontWeight: 700 }}>
         {label}
       </Typography>
-      {console.log(data)}
 
       <Box textAlign="center">
 

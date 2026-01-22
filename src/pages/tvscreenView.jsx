@@ -5,6 +5,8 @@ import SpotRate from "../components/SpotRate";
 import CommodityTable from "../components/CommodityTable";
 import NewsTicker from "../components/News";
 import DelorLogo from "../assets/delor-logo.png";
+import AurifyLogo from "../assets/aurify-logo.png";
+
 import {
   fetchSpotRates,
   fetchServerURL,
@@ -18,6 +20,7 @@ import Carousel from "../components/Carousel";
 import Carousel2 from "../components/Carousel2";
 import ParentCarousel from "../components/ParentCarousel";
 import WorldClock from "../components/WorldClock";
+import BuyersSellersBar from "../components/BuyersSellerBar";
 
 function TvScreen() {
   const [showLimitModal, setShowLimitModal] = useState(false);
@@ -74,6 +77,9 @@ function TvScreen() {
 
         // Handle News
         setNews(newsRes.data.news.news);
+
+        console.log(newsRes);
+
       } catch (error) {
         console.error("Error fetching data:", error);
         setError("An error occurred while fetching data");
@@ -215,7 +221,7 @@ function TvScreen() {
         container
         spacing={4}
         direction="row"
-        alignItems="flex-start"
+        // alignItems="flex-start"
         justifyContent="space-between"
       >
         {/* Side: SpotRate & Date Time */}
@@ -225,7 +231,7 @@ function TvScreen() {
               className="flex flex-row items-center justify-between"
               sx={{
                 height: "auto",
-                width: "10vw",
+                width: "7vw",
                 top: "0",
               }}
             >
@@ -236,20 +242,30 @@ function TvScreen() {
 
           {/* SpotRate Component */}
           <SpotRate />
-
-
+          <BuyersSellersBar
+            buyersPercent={0}
+            sellersPercent={0}
+            logo={AurifyLogo}
+          />
         </Grid>
 
         {/* Side: Commodity Table */}
-        <Grid item xs={12} md={7}>
+        <Grid item xs={12} md={7}
+        >
           <WorldClock />
           <CommodityTable commodities={commodities} />
+          {/* <NewsTicker newsItems={news} /> */}
+          <NewsTicker
+            newsItems={[
+              { description: "Trump’s Greenland Taco Sees Gold Halve Rally" },
+              { description: "Gold prices steady amid global uncertainty" },
+              { description: "Silver gains on industrial demand outlook" },
+            ]}
+          />
+
         </Grid>
       </Grid>
 
-      {/* <NewsTicker newsItems={news} /> */}
-
-      {/* {showLimitModal && <LimitExceededModal />} */}
     </Box>
   );
 }
