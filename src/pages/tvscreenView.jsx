@@ -218,7 +218,7 @@ function TvScreen() {
         justifyContent="space-between"
       >
         {/* Side: SpotRate & Date Time */}
-        <Grid item xs={12} md={5}>
+        <Grid item xs={10} md={4.5}>
           <Box className="flex flex-row items-center justify-center ">
             <Box
               className="flex flex-row items-center justify-between"
@@ -228,12 +228,6 @@ function TvScreen() {
                 top: "0",
               }}
             >
-
-
-
-
-
-
               <img src={DelorLogo} alt="" />
             </Box>
 
@@ -249,7 +243,7 @@ function TvScreen() {
         </Grid>
 
         {/* Side: Commodity Table */}
-        <Grid item xs={12} md={7}
+        <Grid item xs={10} md={7.5}
         >
           <WorldClock />
           <CommodityTable commodities={commodities} />

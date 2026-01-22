@@ -63,9 +63,9 @@ const WorldClock = () => {
             sx={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "1.5vw",
+                gap: "1vw",
                 width: "100%",
-                marginBottom:'1vw'
+                marginBottom: '1vw'
             }}
         >
             {cities.map((city) => (
@@ -85,7 +85,8 @@ const WorldClock = () => {
                             textAlign: "center",
                             padding: "0.4vw",
                             fontWeight: 700,
-                            fontSize: "1vw",
+                            letterSpacing: "0.2vw",
+                            fontSize: "1.1vw",
                             color: "#4a0d1c",
                         }}
                     >
@@ -105,7 +106,7 @@ const WorldClock = () => {
                         <Box
                             sx={{
                                 width: "25%",
-                                maxWidth:"4vw"
+                                maxWidth: "4vw"
                             }}
                         >
 
@@ -117,30 +118,47 @@ const WorldClock = () => {
                         <Box>
                             <Typography
                                 sx={{
-                                    fontSize: "1.2vw",
+                                    fontSize: "1.6vw",
                                     fontWeight: 700,
-                                    lineHeight: 1.2,
+                                    lineHeight: 1.32,
+                                    letterSpacing: "0.2vw",
+
                                 }}
                             >
                                 {formatTime(city.timeZone)}
                             </Typography>
 
-                            <Typography
-                                sx={{
-                                    fontSize: "1vw",
-                                    opacity: 0.7,
-                                }}
-                            >
-                                {formatDate(city.timeZone)}
-                            </Typography>
+                            {city.timeZone === "Asia/Dubai" && (
+                                <>
+                                    <Typography
+                                        sx={{
+                                            fontSize: "1.5vw",
+                                            opacity: 0.8,
+                                            fontWeight: '700',
+                                            color: '#9e7162',
+                                            lineHeight:'1',
+                                            letterSpacing: "0.2vw",
+                                            
+                                        }}
+                                    >
+                                        {formatDate(city.timeZone)}
+                                    </Typography>
 
-                            <Typography
-                                sx={{
-                                    fontSize: "1.1vw",
-                                }}
-                            >
-                                {formatDay(city.timeZone)}
-                            </Typography>
+                                    <Typography
+                                        sx={{
+                                            fontSize: "1.5vw",
+                                            fontWeight: 600,
+                                            color: '#9e7162',
+                                            lineHeight:'1',
+                                            textAlign:'start',
+                                            letterSpacing: "0.2vw",
+
+                                        }}
+                                    >
+                                        {formatDay(city.timeZone)}
+                                    </Typography>
+                                </>
+                            )}
                         </Box>
                     </Box>
                 </Box>

@@ -7,9 +7,9 @@ import { useSpotRate } from "../context/SpotRateContext";
 
 const rowStyle = {
   display: "grid",
-  gridTemplateColumns: "40% 20% 20% 20%",
+  gridTemplateColumns: "25% 25% 25% 25%",
   alignItems: "center",
-  padding: "1vw",
+  padding: "0.2vw 1vw",
   borderRadius: "10px",
   background: "#4b0f1f",
   color: "white",
@@ -17,9 +17,9 @@ const rowStyle = {
 
 const headerStyle = {
   display: "grid",
-  gridTemplateColumns: "40% 20% 20% 20%",
+  gridTemplateColumns: "25% 25% 25% 25%",
   background: "#f0cfa0",
-  padding: "1vw",
+  padding: "0.2vw 1vw",
   borderRadius: "6px",
   color: "#4a0d1c",
   fontWeight: "700",
@@ -77,12 +77,12 @@ const CommodityTable = () => {
     <Box sx={{ width: "100%" }}>
       {/* HEADER */}
       <Box sx={headerStyle}>
-        <Typography fontWeight={700} fontSize="1.3vw">COMMODITY</Typography>
-        <Typography fontWeight={700} fontSize="1.3vw" textAlign="center">WEIGHT</Typography>
-        <Typography fontWeight={700} fontSize="1.3vw" textAlign="center">
+        <Typography fontWeight={700} fontSize="2vw" textAlign="start">COMMODITY</Typography>
+        <Typography fontWeight={700} fontSize="2vw" textAlign="center">WEIGHT</Typography>
+        <Typography fontWeight={700} fontSize="2vw" textAlign="center">
           BID <span style={{ fontSize: "1vw" }}>AED</span>
         </Typography>
-        <Typography fontWeight={700} fontSize="1.3vw" textAlign="center">
+        <Typography fontWeight={700} fontSize="2vw" textAlign="center">
           ASK <span style={{ fontSize: "1vw" }}>AED</span>
         </Typography>
       </Box>
@@ -94,7 +94,7 @@ const CommodityTable = () => {
         <Box key={i}>
           <Box sx={rowStyle}>
             {/* COMMODITY */}
-            <Typography fontSize="1.3vw" fontWeight="700">
+            <Typography fontSize="2vw" fontWeight="700" textAlign="start">
               {row.name}
               {row.purity && (
                 <sup
@@ -110,7 +110,7 @@ const CommodityTable = () => {
 
             {/* WEIGHT */}
             <Typography
-              fontSize="1.3vw"
+              fontSize="2vw"
               fontWeight="700"
               textAlign="center"
             >
@@ -119,7 +119,7 @@ const CommodityTable = () => {
 
             {/* BID */}
             <Typography
-              fontSize="1.3vw"
+              fontSize="2vw"
               fontWeight="700"
               textAlign="center"
             >
@@ -128,7 +128,7 @@ const CommodityTable = () => {
 
             {/* ASK */}
             <Typography
-              fontSize="1.3vw"
+              fontSize="2vw"
               fontWeight="700"
               textAlign="center"
             >

@@ -16,7 +16,7 @@ const NewsTicker = ({ newsItems = [] }) => {
         alignItems: "center",
         px: "1vw",
         // mt:"auto"
-        mt: "2.5vw"
+        mt: "4.5vw"
       }}
     >
       {/* Scrolling Container */}
