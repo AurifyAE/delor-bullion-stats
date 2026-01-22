@@ -150,13 +150,13 @@ const SpotRate = () => {
       <Box display="flex" justifyContent='space-around' gap="0.5vw">
         <Typography sx={{ fontSize: "1.2vw", color: "#e7c27a", mb: "1vw", width: "15%" }}>
         </Typography>
-        <Typography sx={{ fontSize: "1.2vw", color: "#e7c27a", mb: "1vw" }}>
+        <Typography sx={{ fontSize: "1.2vw", color: "#e7c27a", mb: "1vw", fontWeight: '700' }}>
           <span className="bg-[#f0cfa0] text-[#330411] px-1.5 mx-2 rounded-md">
             $</span>
 
           BID Oz
         </Typography>
-        <Typography sx={{ fontSize: "1.2vw", color: "#e7c27a", mb: "1vw" }}>
+        <Typography sx={{ fontSize: "1.2vw", color: "#e7c27a", mb: "1vw", fontWeight: '700' }}>
           <span className="bg-[#f0cfa0] text-[#330411] px-1.5 mx-2 rounded-md">
             $</span>
           ASK Oz

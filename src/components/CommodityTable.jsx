@@ -10,7 +10,7 @@ const rowStyle = {
   gridTemplateColumns: "25% 25% 25% 25%",
   alignItems: "center",
   padding: "0.2vw 1vw",
-  borderRadius: "10px",
+  // borderRadius: "10px",
   background: "#4b0f1f",
   color: "white",
 };
@@ -20,7 +20,7 @@ const headerStyle = {
   gridTemplateColumns: "25% 25% 25% 25%",
   background: "#f0cfa0",
   padding: "0.2vw 1vw",
-  borderRadius: "6px",
+  // borderRadius: "6px",
   color: "#4a0d1c",
   fontWeight: "700",
 };
@@ -97,14 +97,14 @@ const CommodityTable = () => {
             <Typography fontSize="2vw" fontWeight="700" textAlign="start">
               {row.name}
               {row.purity && (
-                <sup
+                <sub
                   style={{
-                    fontSize: "1vw",
+                    fontSize: "0.8vw",
                     marginLeft: "0.4vw",
                   }}
                 >
                   {row.purity}
-                </sup>
+                </sub>
               )}
             </Typography>
 
@@ -136,7 +136,7 @@ const CommodityTable = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ height: "0.5vw" }} />
+          <Box sx={{ height: "0.4vw" }} /> 
         </Box>
       ))}
     </Box>
