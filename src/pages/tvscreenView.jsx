@@ -231,10 +231,16 @@ function TvScreen() {
               className="flex flex-row items-center justify-between"
               sx={{
                 height: "auto",
-                width: "7vw",
+                width: "15vw",
                 top: "0",
               }}
             >
+
+
+
+
+
+
               <img src={DelorLogo} alt="" />
             </Box>
 
@@ -242,11 +248,11 @@ function TvScreen() {
 
           {/* SpotRate Component */}
           <SpotRate />
-          <BuyersSellersBar
+          {/* <BuyersSellersBar
             buyersPercent={0}
             sellersPercent={0}
             logo={AurifyLogo}
-          />
+          /> */}
         </Grid>
 
         {/* Side: Commodity Table */}

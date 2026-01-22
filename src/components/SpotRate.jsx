@@ -159,10 +159,15 @@ const SpotRate = () => {
         <Typography sx={{ fontSize: "1.2vw", color: "#e7c27a", mb: "0.4vw", width: "15%" }}>
         </Typography>
         <Typography sx={{ fontSize: "1.2vw", color: "#e7c27a", mb: "0.4vw" }}>
-          $ BID Oz
+          <span className="bg-[#f0cfa0] text-[#330411] px-1.5 mx-2 rounded-md">
+            $</span>
+
+          BID Oz
         </Typography>
         <Typography sx={{ fontSize: "1.2vw", color: "#e7c27a", mb: "0.4vw" }}>
-          $ ASK Oz
+          <span className="bg-[#f0cfa0] text-[#330411] px-1.5 mx-2 rounded-md">
+            $</span>
+          ASK Oz
         </Typography>
       </Box>
 
