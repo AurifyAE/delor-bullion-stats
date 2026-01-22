@@ -253,14 +253,14 @@ function TvScreen() {
         >
           <WorldClock />
           <CommodityTable commodities={commodities} />
-          <NewsTicker newsItems={news} />
-          {/* <NewsTicker
+          {/* <NewsTicker newsItems={news} /> */}
+          <NewsTicker
             newsItems={[
               { description: "Trump’s Greenland Taco Sees Gold Halve Rally" },
               { description: "Gold prices steady amid global uncertainty" },
               { description: "Silver gains on industrial demand outlook" },
             ]}
-          /> */}
+          />
 
         </Grid>
       </Grid>
