@@ -28,53 +28,90 @@ const headerStyle = {
 const CommodityTable = () => {
   const { goldData, silverData } = useSpotRate();
 
-  const data = [
-    {
+  const buildTableData = () => {
+    if (!goldData || !silverData) return [];
+
+    const AED_CONVERSION = 3.674;
+    const OUNCE = 31.103;
+
+    const rows = [];
+
+    const pushRow = ({
+      name,
+      purity,
+      weightLabel,
+      unitMultiplier,
+      spot,
+    }) => {
+      const bid = (spot.bid / OUNCE) * AED_CONVERSION * unitMultiplier;
+      const ask = (spot.ask / OUNCE) * AED_CONVERSION * unitMultiplier;
+
+      rows.push({
+        name,
+        purity,
+        weight: weightLabel,
+        bid,
+        ask,
+      });
+    };
+
+    /* ---------- GOLD ---------- */
+    pushRow({
       name: "GOLD",
       purity: "24k",
-      weight: "1 GM",
-      bid: 569.64,
-      ask: 570.71,
-    },
-    {
+      weightLabel: "1 GM",
+      unitMultiplier: 1,
+      spot: goldData,
+    });
+
+    pushRow({
       name: "GOLD",
       purity: "995",
-      weight: "1 KG",
-      bid: 566795,
-      ask: 567852,
-    },
-    {
+      weightLabel: "1 KG",
+      unitMultiplier: 1000 * 0.995,
+      spot: goldData,
+    });
+
+    pushRow({
       name: "GOLD",
       purity: "9999",
-      weight: "1 KG",
-      bid: 569643,
-      ask: 570705,
-    },
-    {
+      weightLabel: "1 KG",
+      unitMultiplier: 1000 * 0.9999,
+      spot: goldData,
+    });
+
+    pushRow({
       name: "GOLD",
       purity: "TEN TOLA",
-      weight: "1 TTB",
-      bid: 66377,
-      ask: 66500,
-    },
-    {
+      weightLabel: "1 TTB",
+      unitMultiplier: 116.64,
+      spot: goldData,
+    });
+
+    /* ---------- SILVER ---------- */
+    pushRow({
       name: "SILVER",
       purity: "",
-      weight: "1 KG",
-      bid: 11082,
-      ask: 11144,
-    },
-    {
+      weightLabel: "1 KG",
+      unitMultiplier: 1000,
+      spot: silverData,
+    });
+
+    pushRow({
       name: "SILVER",
       purity: "",
-      weight: "1 GM",
-      bid: 10.16,
-      ask: 10.19,
-    },
-  ];
+      weightLabel: "1 GM",
+      unitMultiplier: 1,
+      spot: silverData,
+    });
+
+    return rows;
+  };
+  const data = buildTableData();
+
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", marginTop: '3vw' }}>
       {/* HEADER */}
       <Box sx={headerStyle}>
         <Typography fontWeight={700} fontSize="2vw" textAlign="start">COMMODITY</Typography>
@@ -123,7 +160,8 @@ const CommodityTable = () => {
               fontWeight="700"
               textAlign="center"
             >
-              {row.bid.toLocaleString()}
+              {row.bid ? Math.round(row.bid).toLocaleString() : "--"}
+
             </Typography>
 
             {/* ASK */}
@@ -132,11 +170,11 @@ const CommodityTable = () => {
               fontWeight="700"
               textAlign="center"
             >
-              {row.ask.toLocaleString()}
+              {row.ask ? Math.round(row.ask).toLocaleString() : "--"}
             </Typography>
           </Box>
 
-          <Box sx={{ height: "0.4vw" }} /> 
+          <Box sx={{ height: "0.4vw" }} />
         </Box>
       ))}
     </Box>
