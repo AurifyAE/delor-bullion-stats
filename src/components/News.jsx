@@ -2,6 +2,8 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 
 const NewsTicker = ({ newsItems = [] }) => {
+
+
   return (
     <Box
       sx={{
@@ -14,7 +16,7 @@ const NewsTicker = ({ newsItems = [] }) => {
         alignItems: "center",
         px: "1vw",
         // mt:"auto"
-        mt:"2.5vw"
+        mt: "2.5vw"
       }}
     >
       {/* Scrolling Container */}

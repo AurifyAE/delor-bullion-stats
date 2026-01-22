@@ -78,10 +78,10 @@ function TvScreen() {
         // Handle News
         setNews(newsRes.data.news.news);
 
-        console.log(newsRes);
+        console.log(newsRes.data);
 
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.log("Error fetching data:", error);
         setError("An error occurred while fetching data");
       }
     };
@@ -253,14 +253,14 @@ function TvScreen() {
         >
           <WorldClock />
           <CommodityTable commodities={commodities} />
-          {/* <NewsTicker newsItems={news} /> */}
-          <NewsTicker
+          <NewsTicker newsItems={news} />
+          {/* <NewsTicker
             newsItems={[
               { description: "Trump’s Greenland Taco Sees Gold Halve Rally" },
               { description: "Gold prices steady amid global uncertainty" },
               { description: "Silver gains on industrial demand outlook" },
             ]}
-          />
+          /> */}
 
         </Grid>
       </Grid>
