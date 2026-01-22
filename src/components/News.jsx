@@ -13,7 +13,8 @@ const NewsTicker = ({ newsItems = [] }) => {
         display: "flex",
         alignItems: "center",
         px: "1vw",
-        mt:"auto"
+        // mt:"auto"
+        mt:"2.5vw"
       }}
     >
       {/* Scrolling Container */}

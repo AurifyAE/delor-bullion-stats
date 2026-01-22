@@ -99,20 +99,28 @@ const SpotRate = () => {
           <Box sx={{ background: "#c20000", px: "0.8vw", borderRadius: "4px", fontSize: "1.2vw" }}>
             Low
           </Box>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <circle
-              cx="12"
-              cy="12"
-              r="11"
-              fill="none"
-              stroke="#c20000"
-              stroke-width="2"
-            />
-            <path
-              d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"
-              fill="#c20000"
-            />
-          </svg>
+          <Box sx={{ width: "1.2vw", aspectRatio: "1 / 1" }}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="11"
+                fill="none"
+                stroke="#c20000"
+                strokeWidth="2"
+              />
+              <path
+                d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"
+                fill="#c20000"
+              />
+            </svg>
+          </Box>
 
           <Typography sx={{ fontSize: "1.2vw" }}>{goldData.low}</Typography>
         </Box>
@@ -121,20 +129,27 @@ const SpotRate = () => {
           <Box sx={{ background: "#00a000", px: "0.8vw", borderRadius: "4px", fontSize: "1.2vw" }}>
             High
           </Box>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <circle
-              cx="12"
-              cy="12"
-              r="11"
-              fill="none"
-              stroke="#1bbf4a"
-              stroke-width="2"
-            />
-            <path
-              d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
-              fill="#1bbf4a"
-            />
-          </svg>
+          <Box sx={{ width: "1.2vw", aspectRatio: "1 / 1" }}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid meet"
+            >     <circle
+                cx="12"
+                cy="12"
+                r="11"
+                fill="none"
+                stroke="#1bbf4a"
+                stroke-width="2"
+              />
+              <path
+                d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+                fill="#1bbf4a"
+              />
+            </svg>
+          </Box>
 
           <Typography sx={{ fontSize: "1.2vw" }}>{goldData.high}</Typography>
         </Box>

@@ -105,7 +105,7 @@ const WorldClock = () => {
                         <Box
                             sx={{
                                 width: "25%",
-                                maxWidth:"70px"
+                                maxWidth:"4vw"
                             }}
                         >
 
