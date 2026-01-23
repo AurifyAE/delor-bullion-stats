@@ -224,7 +224,7 @@ function TvScreen() {
               className="flex flex-row items-center justify-between"
               sx={{
                 height: "auto",
-                width: "15vw",
+                width: "13vw",
                 top: "0",
               }}
             >
@@ -235,11 +235,9 @@ function TvScreen() {
 
           {/* SpotRate Component */}
           <SpotRate />
-          {/* <BuyersSellersBar
-            buyersPercent={0}
-            sellersPercent={0}
+          <BuyersSellersBar
             logo={AurifyLogo}
-          /> */}
+          />
         </Grid>
 
         {/* Side: Commodity Table */}
@@ -247,14 +245,14 @@ function TvScreen() {
         >
           <WorldClock />
           <CommodityTable commodities={commodities} />
-          {/* <NewsTicker newsItems={news} /> */}
-          <NewsTicker
+          <NewsTicker newsItems={news} />
+          {/* <NewsTicker
             newsItems={[
               { description: "Trump’s Greenland Taco Sees Gold Halve Rally" },
               { description: "Gold prices steady amid global uncertainty" },
               { description: "Silver gains on industrial demand outlook" },
             ]}
-          />
+          /> */}
 
         </Grid>
       </Grid>

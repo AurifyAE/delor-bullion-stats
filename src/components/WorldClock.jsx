@@ -99,7 +99,7 @@ const WorldClock = () => {
                             display: "flex",
                             alignItems: "center",
                             gap: "1vw",
-                            padding: "0.5vw 1.5vw",
+                            padding: "0.5vw 1vw",
                         }}
                     >
                         {/* Flag */}
@@ -118,7 +118,7 @@ const WorldClock = () => {
                         <Box>
                             <Typography
                                 sx={{
-                                    fontSize: "1.6vw",
+                                    fontSize: "1.5vw",
                                     fontWeight: 700,
                                     lineHeight: 1.32,
                                     letterSpacing: "0.2vw",
@@ -146,12 +146,12 @@ const WorldClock = () => {
 
                                     <Typography
                                         sx={{
-                                            fontSize: "1.5vw",
+                                            fontSize: "1.3vw",
                                             fontWeight: 600,
                                             color: '#9e7162',
                                             lineHeight:'1',
                                             textAlign:'start',
-                                            letterSpacing: "0.2vw",
+                                            letterSpacing: "1vw",
 
                                         }}
                                     >

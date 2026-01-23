@@ -66,7 +66,7 @@ const CommodityTable = ({ commodities }) => {
       return {
         name:
           item.metal === "minted bar"
-            ? "SWISS GOLD BARS"
+            ? "MINTED BARS"
             : item.metal.toUpperCase(),
         purity: item.purity,
         weight: `${item.unit} ${item.weight}`,
@@ -82,12 +82,12 @@ const CommodityTable = ({ commodities }) => {
     <Box sx={{ width: "100%", marginTop: "3vw" }}>
       {/* HEADER */}
       <Box sx={headerStyle}>
-        <Typography fontSize="2vw" textAlign='start'>COMMODITY</Typography>
-        <Typography fontSize="2vw" textAlign="start">WEIGHT</Typography>
-        <Typography fontSize="2vw" textAlign="start">
+        <Typography fontSize="2vw" fontWeight='600' textAlign='start'>COMMODITY</Typography>
+        <Typography fontSize="2vw" fontWeight='600' textAlign="start">WEIGHT</Typography>
+        <Typography fontSize="2vw" fontWeight='600' textAlign="start">
           BID <span style={{ fontSize: "1vw" }}>AED</span>
         </Typography>
-        <Typography fontSize="2vw" textAlign="start">
+        <Typography fontSize="2vw" fontWeight='600' textAlign="start">
           ASK <span style={{ fontSize: "1vw" }}>AED</span>
         </Typography>
       </Box>
@@ -107,15 +107,15 @@ const CommodityTable = ({ commodities }) => {
               )}
             </Typography>
 
-            <Typography fontSize="2vw" textAlign="start">
+            <Typography fontSize="2vw" textAlign="start" fontWeight='600'>
               {row.weight}
             </Typography>
 
-            <Typography fontSize="2vw" textAlign="start">
+            <Typography fontSize="2vw" textAlign="start" fontWeight='600'>
               {Math.round(row.bid).toLocaleString()}
             </Typography>
 
-            <Typography fontSize="2vw" textAlign="start">
+            <Typography fontSize="2vw" textAlign="start" fontWeight='600'>
               {Math.round(row.ask).toLocaleString()}
             </Typography>
           </Box>

@@ -100,21 +100,21 @@ const SpotRate = () => {
       sx={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr 1fr",
-        gap: "20px",
+        gap: "1vw",
         alignItems: "center",
         border: "1px solid #f0cfa0",
         borderRadius: "4px",
         padding: "1vw",
       }}
     >
-      <Typography sx={{ fontSize: "2vw", fontWeight: 700 }}>{label}</Typography>
+      <Typography sx={{ fontSize: "1.8vw", fontWeight: 700 }}>{label}</Typography>
       <Box textAlign="center">{priceBox(data.bid, bidDir)}</Box>
       <Box textAlign="center">{priceBox(data.ask, askDir)}</Box>
     </Box>
   );
 
   return (
-    <Box sx={{ padding: "2vw", color: "#fff" }}>
+    <Box sx={{ padding: "1.8vw", color: "#fff" }}>
       <Typography
         sx={{
           textAlign: "center",
