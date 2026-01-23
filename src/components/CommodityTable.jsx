@@ -85,7 +85,7 @@ const CommodityTable = ({ commodities }) => {
   const data = buildTableData();
 
   return (
-    <Box sx={{ width: "100%", marginTop: "3vw" }}>
+    <Box sx={{ width: "100%", marginTop: "1vw" }}>
       {/* HEADER */}
       <Box sx={headerStyle}>
         <Typography fontSize="2vw" fontWeight='600' textAlign='start'>COMMODITY</Typography>

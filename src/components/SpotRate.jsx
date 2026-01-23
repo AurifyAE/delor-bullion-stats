@@ -83,7 +83,7 @@ const SpotRate = () => {
       sx={{
         fontSize: "2vw",
         fontWeight: 700,
-        padding: "0.6vw 1.2vw",
+        padding: "0.6vw 0.5vw",
         borderRadius: "6px",
         minWidth: "10vw",
         textAlign: "center",

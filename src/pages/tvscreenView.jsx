@@ -242,6 +242,8 @@ function TvScreen() {
 
         {/* Side: Commodity Table */}
         <Grid item xs={10} md={7.5}
+          display='flex' flexDirection='column'
+          justifyContent='space-between'
         >
           <WorldClock />
           <CommodityTable commodities={commodities} />
