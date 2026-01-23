@@ -1,125 +1,93 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useSpotRate } from "../context/SpotRateContext";
-
-const rowStyle = {
-  display: "grid",
-  gridTemplateColumns: "25% 25% 25% 25%",
-  alignItems: "center",
-  padding: "0.2vw 1vw",
-  // borderRadius: "10px",
-  background: "#4b0f1f",
-  color: "white",
-};
 
 const headerStyle = {
   display: "grid",
-  gridTemplateColumns: "25% 25% 25% 25%",
+  gridTemplateColumns: "34% 22% 22% 22%",
   background: "#f0cfa0",
   padding: "0.2vw 1vw",
-  // borderRadius: "6px",
   color: "#4a0d1c",
   fontWeight: "700",
 };
 
-const CommodityTable = () => {
+const rowStyle = {
+  display: "grid",
+  gridTemplateColumns: "34% 22% 22% 22%",
+  alignItems: "center",
+  padding: "0.2vw 1vw",
+  background: "#4b0f1f",
+  color: "white",
+};
+
+const OUNCE = 31.103;
+const AED = 3.674;
+
+const UNIT_MULTIPLIER = {
+  GM: 1,
+  KG: 1000,
+  TTB: 116.64,
+  TOLA: 11.664,
+  OZ: 31.103,
+};
+
+const CommodityTable = ({ commodities }) => {
   const { goldData, silverData } = useSpotRate();
 
+  const getSpot = (metal) => {
+    if (metal.includes("gold")) return goldData;
+    if (metal.includes("silver")) return silverData;
+    return null;
+  };
+
+  const purityFactor = (purity) =>
+    purity ? purity / Math.pow(10, purity.toString().length) : 1;
+
   const buildTableData = () => {
-    if (!goldData || !silverData) return [];
+    if (!commodities?.length) return [];
 
-    const AED_CONVERSION = 3.674;
-    const OUNCE = 31.103;
+    return commodities.map((item) => {
+      const spot = getSpot(item.metal.toLowerCase());
+      if (!spot) return null;
 
-    const rows = [];
+      const multiplier = UNIT_MULTIPLIER[item.weight] || 1;
+      const purity = purityFactor(item.purity);
 
-    const pushRow = ({
-      name,
-      purity,
-      weightLabel,
-      unitMultiplier,
-      spot,
-    }) => {
-      const bid = (spot.bid / OUNCE) * AED_CONVERSION * unitMultiplier;
-      const ask = (spot.ask / OUNCE) * AED_CONVERSION * unitMultiplier;
+      const bid =
+        ((spot.bid / OUNCE) * AED * multiplier * item.unit * purity) +
+        (parseFloat(item.buyCharge) || 0) +
+        (parseFloat(item.buyPremium) || 0);
 
-      rows.push({
-        name,
-        purity,
-        weight: weightLabel,
+      const ask =
+        ((spot.ask / OUNCE) * AED * multiplier * item.unit * purity) +
+        (parseFloat(item.sellCharge) || 0) +
+        (parseFloat(item.sellPremium) || 0);
+
+      return {
+        name:
+          item.metal === "minted bar"
+            ? "SWISS GOLD BARS"
+            : item.metal.toUpperCase(),
+        purity: item.purity,
+        weight: `${item.unit} ${item.weight}`,
         bid,
         ask,
-      });
-    };
-
-    /* ---------- GOLD ---------- */
-    pushRow({
-      name: "GOLD",
-      purity: "24k",
-      weightLabel: "1 GM",
-      unitMultiplier: 1,
-      spot: goldData,
-    });
-
-    pushRow({
-      name: "GOLD",
-      purity: "995",
-      weightLabel: "1 KG",
-      unitMultiplier: 1000 * 0.995,
-      spot: goldData,
-    });
-
-    pushRow({
-      name: "GOLD",
-      purity: "9999",
-      weightLabel: "1 KG",
-      unitMultiplier: 1000 * 0.9999,
-      spot: goldData,
-    });
-
-    pushRow({
-      name: "GOLD",
-      purity: "TEN TOLA",
-      weightLabel: "1 TTB",
-      unitMultiplier: 116.64,
-      spot: goldData,
-    });
-
-    /* ---------- SILVER ---------- */
-    pushRow({
-      name: "SILVER",
-      purity: "",
-      weightLabel: "1 KG",
-      unitMultiplier: 1000,
-      spot: silverData,
-    });
-
-    pushRow({
-      name: "SILVER",
-      purity: "",
-      weightLabel: "1 GM",
-      unitMultiplier: 1,
-      spot: silverData,
-    });
-
-    return rows;
+      };
+    }).filter(Boolean);
   };
+
   const data = buildTableData();
 
-
   return (
-    <Box sx={{ width: "100%", marginTop: '3vw' }}>
+    <Box sx={{ width: "100%", marginTop: "3vw" }}>
       {/* HEADER */}
       <Box sx={headerStyle}>
-        <Typography fontWeight={700} fontSize="2vw" textAlign="start">COMMODITY</Typography>
-        <Typography fontWeight={700} fontSize="2vw" textAlign="center">WEIGHT</Typography>
-        <Typography fontWeight={700} fontSize="2vw" textAlign="center">
+        <Typography fontSize="2vw" textAlign='start'>COMMODITY</Typography>
+        <Typography fontSize="2vw" textAlign="start">WEIGHT</Typography>
+        <Typography fontSize="2vw" textAlign="start">
           BID <span style={{ fontSize: "1vw" }}>AED</span>
         </Typography>
-        <Typography fontWeight={700} fontSize="2vw" textAlign="center">
+        <Typography fontSize="2vw" textAlign="start">
           ASK <span style={{ fontSize: "1vw" }}>AED</span>
         </Typography>
       </Box>
@@ -129,48 +97,26 @@ const CommodityTable = () => {
       {/* ROWS */}
       {data.map((row, i) => (
         <Box key={i}>
-          <Box sx={rowStyle}>
-            {/* COMMODITY */}
-            <Typography fontSize="2vw" fontWeight="700" textAlign="start">
+          <Box sx={rowStyle}> 
+            <Typography fontSize="2vw" textAlign='start' fontWeight="700">
               {row.name}
               {row.purity && (
-                <sub
-                  style={{
-                    fontSize: "0.8vw",
-                    marginLeft: "0.4vw",
-                  }}
-                >
+                <sub style={{ fontSize: "0.8vw", marginLeft: "0.4vw" }}>
                   {row.purity}
                 </sub>
               )}
             </Typography>
 
-            {/* WEIGHT */}
-            <Typography
-              fontSize="2vw"
-              fontWeight="700"
-              textAlign="center"
-            >
+            <Typography fontSize="2vw" textAlign="start">
               {row.weight}
             </Typography>
 
-            {/* BID */}
-            <Typography
-              fontSize="2vw"
-              fontWeight="700"
-              textAlign="center"
-            >
-              {row.bid ? Math.round(row.bid).toLocaleString() : "--"}
-
+            <Typography fontSize="2vw" textAlign="start">
+              {Math.round(row.bid).toLocaleString()}
             </Typography>
 
-            {/* ASK */}
-            <Typography
-              fontSize="2vw"
-              fontWeight="700"
-              textAlign="center"
-            >
-              {row.ask ? Math.round(row.ask).toLocaleString() : "--"}
+            <Typography fontSize="2vw" textAlign="start">
+              {Math.round(row.ask).toLocaleString()}
             </Typography>
           </Box>
 
