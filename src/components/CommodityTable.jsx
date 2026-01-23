@@ -128,8 +128,8 @@ const CommodityTable = ({ commodities }) => {
               {row.name == 'Silver' && row.weight == '1 GM' ?
 
                 row.bid.toLocaleString(undefined, {
-                  minimumFractionDigits: 4,
-                  maximumFractionDigits: 4,
+                  minimumFractionDigits: 3,
+                  maximumFractionDigits: 3,
                 })
 
                 :
@@ -149,8 +149,8 @@ const CommodityTable = ({ commodities }) => {
               {row.name == 'Silver' && row.weight == '1 GM' ?
 
                 row.ask.toLocaleString(undefined, {
-                  minimumFractionDigits: 4,
-                  maximumFractionDigits: 4,
+                  minimumFractionDigits: 3,
+                  maximumFractionDigits: 3,
                 })
 
                 :
