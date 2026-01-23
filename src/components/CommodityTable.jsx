@@ -85,6 +85,22 @@ const CommodityTable = ({ commodities }) => {
 
   const data = buildTableData();
 
+  const formatByDigits = (value) => {
+    if (value == null || isNaN(value)) return "";
+
+    const integerDigits = Math.floor(Math.abs(value)).toString().length;
+
+    let decimals = 3;
+    if (integerDigits >= 4) decimals = 0;
+    else if (integerDigits === 3) decimals = 2;
+
+    return value.toLocaleString(undefined, {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
+  };
+
+
   return (
     <Box sx={{ width: "100%", marginTop: "1vw" }}>
       {/* HEADER */}
@@ -125,42 +141,15 @@ const CommodityTable = ({ commodities }) => {
               {/* {Math.round(row.bid).toLocaleString()} */}
 
 
-              {row.name == 'Silver' && row.weight == '1 GM' ?
-
-                row.bid.toLocaleString(undefined, {
-                  minimumFractionDigits: 3,
-                  maximumFractionDigits: 3,
-                })
-
-                :
-
-                row.bid.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })
-
-              }
+              {formatByDigits(row.bid)}
 
             </Typography>
 
             <Typography fontSize="2vw" textAlign="start" fontWeight='600'>
               {/* {Math.round(row.ask).toLocaleString()} */}
 
-              {row.name == 'Silver' && row.weight == '1 GM' ?
+              {formatByDigits(row.ask)}
 
-                row.ask.toLocaleString(undefined, {
-                  minimumFractionDigits: 3,
-                  maximumFractionDigits: 3,
-                })
-
-                :
-
-                row.ask.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })
-
-              }
             </Typography>
           </Box>
 
