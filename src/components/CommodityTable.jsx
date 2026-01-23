@@ -70,7 +70,8 @@ const CommodityTable = ({ commodities }) => {
         name:
           item.metal === "Gold Ten TOLA"
             ? "Gold"
-            : item.metal.toUpperCase(),
+            // : item.metal.toUpperCase(),
+            : item.metal,
         purity: item.metal === "Gold Ten TOLA"
           ? "TEN TOLA"
           : item.purity,
@@ -115,14 +116,51 @@ const CommodityTable = ({ commodities }) => {
 
             <Typography fontSize="2vw" textAlign="start" fontWeight='600'>
               {row.weight}
+
+              {console.log(row.weight)}
+
             </Typography>
 
             <Typography fontSize="2vw" textAlign="start" fontWeight='600'>
-              {Math.round(row.bid).toLocaleString()}
+              {/* {Math.round(row.bid).toLocaleString()} */}
+
+
+              {row.name == 'Silver' && row.weight == '1 GM' ?
+
+                row.bid.toLocaleString(undefined, {
+                  minimumFractionDigits: 4,
+                  maximumFractionDigits: 4,
+                })
+
+                :
+
+                row.bid.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })
+
+              }
+
             </Typography>
 
             <Typography fontSize="2vw" textAlign="start" fontWeight='600'>
-              {Math.round(row.ask).toLocaleString()}
+              {/* {Math.round(row.ask).toLocaleString()} */}
+
+              {row.name == 'Silver' && row.weight == '1 GM' ?
+
+                row.ask.toLocaleString(undefined, {
+                  minimumFractionDigits: 4,
+                  maximumFractionDigits: 4,
+                })
+
+                :
+
+                row.ask.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })
+
+              }
             </Typography>
           </Box>
 
