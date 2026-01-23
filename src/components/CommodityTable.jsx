@@ -62,19 +62,25 @@ const CommodityTable = ({ commodities }) => {
         ((spot.ask / OUNCE) * AED * multiplier * item.unit * purity) +
         (parseFloat(item.sellCharge) || 0) +
         (parseFloat(item.sellPremium) || 0);
+      console.log(item.metal)
 
       return {
+
+
         name:
-          item.metal === "minted bar"
-            ? "MINTED BARS"
+          item.metal === "Gold Ten TOLA"
+            ? "Gold"
             : item.metal.toUpperCase(),
-        purity: item.purity,
+        purity: item.metal === "Gold Ten TOLA"
+          ? "TEN TOLA"
+          : item.purity,
         weight: `${item.unit} ${item.weight}`,
         bid,
         ask,
       };
     }).filter(Boolean);
   };
+
 
   const data = buildTableData();
 
@@ -97,7 +103,7 @@ const CommodityTable = ({ commodities }) => {
       {/* ROWS */}
       {data.map((row, i) => (
         <Box key={i}>
-          <Box sx={rowStyle}> 
+          <Box sx={rowStyle}>
             <Typography fontSize="2vw" textAlign='start' fontWeight="700">
               {row.name}
               {row.purity && (
