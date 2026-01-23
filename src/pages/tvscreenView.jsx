@@ -208,7 +208,7 @@ function TvScreen() {
   const { day, date, month, year } = getFormattedDateParts(currentDate);
 
   return (
-    <Box sx={{ minHeight: "100vh", color: "white", padding: "20px" }}>
+    <Box sx={{ minHeight: "100vh", color: "white", padding: "20px", display: 'flex', alignItems: 'center' }}>
       {/* Grid */}
       <Grid
         container
